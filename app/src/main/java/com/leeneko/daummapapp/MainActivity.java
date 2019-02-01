@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ViewGroup;
 
+import net.daum.mf.map.api.MapPOIItem;
 import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
 
@@ -30,6 +31,13 @@ public class MainActivity extends AppCompatActivity {
         MapPoint mapPoint = MapPoint.mapPointWithGeoCoord(centerLat, centerLon);
         mapView.setMapCenterPoint(mapPoint, true);
         mapViewContainer.addView(mapView);
+
+        MapPOIItem maker = new MapPOIItem();
+        maker.setItemName("내위치");
+        maker.setTag(0);
+        maker.setMapPoint(mapPoint);
+        maker.setMarkerType(MapPOIItem.MarkerType.BluePin);
+        mapView.addPOIItem(maker);
     }
 
 }
